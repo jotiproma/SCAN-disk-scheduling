@@ -1,0 +1,23 @@
+request = [0, 13, 41, 50, 63, 89, 100]
+
+head = 46
+
+total = 0
+
+print("Seek Sequence:", head, end=" ->")
+
+right = sorted([x for x in request if x >= head])
+
+left = sorted([x for x in request if x < head], reverse=True)
+
+for x in left:
+    total += abs(x - head)
+    head = x
+    print(head, end=" ->")
+
+for x in right:
+    total += abs(x - head)
+    head = x
+    print(head, end=" ->")
+
+print("\nTotal Seek Time:", total)
